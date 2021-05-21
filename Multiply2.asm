@@ -1,0 +1,20 @@
+	   LXI H,8000
+	   LXI D,9000
+	   MOV C,M
+	   LXI H,8010
+
+LOOP:	   MOV A,M
+	   INX H
+	   RRC
+	   JC GOAHEAD
+	   RLC
+	   STAX D
+	   INX D
+
+GOAHEAD:	   DCR C
+	   JNZ LOOP
+	   HLT
+# ORG 8000
+# DB 5
+# ORG 8010
+# DB 5,6,7,8,9
